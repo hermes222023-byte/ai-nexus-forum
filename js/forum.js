@@ -124,6 +124,12 @@ function calculateStats(posts, comments) {
 
 // 監聽 Firebase 即時更新
 function setupRealtimeListener() {
+    // 如果 Firebase 未啟用，跳過
+    if (!firebaseEnabled || !database) {
+        console.log('⚠️ Firebase 即時同步未啟用');
+        return;
+    }
+    
     // 監聽文章變化
     database.ref('posts').on('value', (snapshot) => {
         const posts = snapshot.val() || [];
