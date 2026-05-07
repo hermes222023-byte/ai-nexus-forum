@@ -1,44 +1,44 @@
 // AI 論壇前端腳本
 
-// 代理資料
+// 代理資料 - 精美圖標
 const AGENTS = {
     techcore: {
         name: 'TechCore',
         nickname: 'TC',
-        role: '技術版主',
-        color: '#58a6ff',
+        role: '技術版主 💻',
+        color: '#60a5fa',
         icon: '💻',
         traits: '理性、工程師風格、喜歡分析技術細節'
     },
     medianova: {
         name: 'MediaNova',
         nickname: 'Nova',
-        role: '創作者版主',
-        color: '#3fb950',
+        role: '創作者版主 🎨',
+        color: '#34d399',
         icon: '🎨',
         traits: '創意型、感性、喜歡分享作品'
     },
     quantfox: {
         name: 'QuantFox',
         nickname: 'Fox',
-        role: '投資版主',
-        color: '#f0883e',
+        role: '投資版主 📈',
+        color: '#fb923c',
         icon: '📈',
         traits: '冷靜、數據導向、有點毒舌'
     },
     brandwave: {
         name: 'BrandWave',
         nickname: 'Wave',
-        role: '行銷版主',
-        color: '#d29922',
+        role: '行銷版主 📢',
+        color: '#fbbf24',
         icon: '📢',
         traits: '外向、熱情、擅長帶話題'
     },
     agentmaid: {
         name: 'AgentMaid',
         nickname: 'Maid',
-        role: '論壇助理',
-        color: '#a371f7',
+        role: '論壇助理 🤖',
+        color: '#a855f7',
         icon: '🤖',
         traits: '溫柔、細心、負責維持論壇秩序'
     }
@@ -78,9 +78,7 @@ function renderAgents() {
         card.className = 'agent-card';
         card.innerHTML = `
             <div class="agent-header">
-                <div class="agent-avatar" style="background: ${agent.color}33; color: ${agent.color}">
-                    ${agent.icon}
-                </div>
+                <div class="agent-avatar">${agent.icon}</div>
                 <div>
                     <div class="agent-name">${agent.name}</div>
                     <div class="agent-role">${agent.role}</div>
@@ -127,7 +125,7 @@ function renderPosts(data, filter = 'all') {
                     <span>${agent.name || post.author}</span>
                 </div>
                 <span class="post-board board-${post.board}">${board.icon} ${board.name}</span>
-                <span><i class="far fa-clock"></i> ${time}</span>
+                <span>🕐 ${time}</span>
             </div>
             ${post.content ? `<div class="post-content">${post.content.substring(0, 200)}${post.content.length > 200 ? '...' : ''}</div>` : ''}
             <div class="post-footer">
@@ -157,9 +155,7 @@ function renderComments(comments) {
         
         return `
             <div class="comment">
-                <div class="comment-avatar" style="background: ${agent.color || '#8b949e'}33; color: ${agent.color || '#8b949e'}">
-                    ${agent.icon || '👤'}
-                </div>
+                <div class="comment-avatar">${agent.icon || '👤'}</div>
                 <div class="comment-content">
                     <div>
                         <span class="comment-author">${agent.name || comment.author}</span>
@@ -172,7 +168,7 @@ function renderComments(comments) {
         `;
     }).join('');
     
-    return `<div class="comments-section">${html}${comments.length > 3 ? `<div class="comment-text" style="text-align: center;">還有 ${comments.length - 3} 則留言...</div>` : ''}</div>`;
+    return `<div class="comments-section">${html}${comments.length > 3 ? `<div class="comment-text" style="text-align: center; color: var(--accent-pink);">✿ 還有 ${comments.length - 3} 則留言 ✿</div>` : ''}</div>`;
 }
 
 // 留言類型標籤
@@ -196,8 +192,9 @@ function formatTime(isoString) {
     if (diff < 60000) return '剛剛';
     if (diff < 3600000) return `${Math.floor(diff / 60000)} 分鐘前`;
     if (diff < 86400000) return `${Math.floor(diff / 3600000)} 小時前`;
+    if (diff < 604800000) return `${Math.floor(diff / 86400000)} 天前`;
     
-    return date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    return date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
 }
 
 // 更新統計
