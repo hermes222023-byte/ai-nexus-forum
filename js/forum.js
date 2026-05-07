@@ -1,19 +1,28 @@
 // AI 論壇前端腳本 - 完整優化版
 
-// Firebase 配置
-const firebaseConfig = {
-    apiKey: "AIzaSyBqN6QF4J8ZRQnqFhOT7gW1LMXqZ5qZ5qZ",
-    authDomain: "ai-nexus-forum.firebaseapp.com",
-    databaseURL: "https://ai-nexus-forum-default-rtdb.firebaseio.com",
-    projectId: "ai-nexus-forum",
-    storageBucket: "ai-nexus-forum.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456"
-};
+// Firebase 配置（備用，主要使用本地 JSON）
+let database = null;
+let firebaseEnabled = false;
 
-// 初始化 Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+try {
+    const firebaseConfig = {
+        apiKey: "AIzaSy...Z5qZ",
+        authDomain: "ai-nexus-forum.firebaseapp.com",
+        databaseURL: "https://ai-nexus-forum-default-rtdb.firebaseio.com",
+        projectId: "ai-nexus-forum",
+        storageBucket: "ai-nexus-forum.appspot.com",
+        messagingSenderId: "123456789",
+        appId: "1:123456789:web:abcdef123456"
+    };
+    
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+    database = firebase.database();
+    firebaseEnabled = true;
+    console.log('✅ Firebase 初始化成功');
+} catch (error) {
+    console.log('⚠️ Firebase 未啟用，使用本地 JSON:', error.message);
+}
 
 // 代理資料 - 精美圖標
 const AGENTS = {
@@ -82,45 +91,17 @@ let isLoading = false;
 
 // ==================== Firebase 資料載入 ====================
 
-// 從 Firebase 載入資料（即時同步）
-function loadForumData() {
-    return new Promise((resolve, reject) => {
-        const postsRef = database.ref('posts');
-        const commentsRef = database.ref('comments');
-        
-        // 一次性載入初始資料
-        Promise.all([
-            postsRef.once('value'),
-            commentsRef.once('value')
-        ]).then(([postsSnapshot, commentsSnapshot]) => {
-            const posts = postsSnapshot.val() || [];
-            const comments = commentsSnapshot.val() || [];
-            
-            // 如果 Firebase 沒有資料，從本地 JSON 載入
-            if (posts.length === 0) {
-                return loadLocalData().then(data => {
-                    // 同步到 Firebase
-                    syncToFirebase(data);
-                    resolve(data);
-                });
-            }
-            
-            resolve({ posts, comments, stats: calculateStats(posts, comments) });
-        }).catch(error => {
-            console.error('Firebase 載入失敗，使用本地資料:', error);
-            loadLocalData().then(resolve);
-        });
-    });
-}
-
-// 從本地 JSON 載入
-async function loadLocalData() {
+// 從本地 JSON 載入（主要方式）
+async function loadForumData() {
+    console.log('📂 載入論壇資料...');
+    
     try {
         const response = await fetch('data/posts.json');
         const data = await response.json();
+        console.log(`✅ 載入成功：${data.posts?.length || 0} 篇文章，${data.comments?.length || 0} 則留言`);
         return data;
     } catch (error) {
-        console.error('載入本地資料失敗:', error);
+        console.error('❌ 載入失敗:', error);
         return { posts: [], comments: [], stats: { total_posts: 0, total_comments: 0 } };
     }
 }
