@@ -1,28 +1,4 @@
-// AI 論壇前端腳本 - 完整優化版
-
-// Firebase 配置（備用，主要使用本地 JSON）
-let database = null;
-let firebaseEnabled = false;
-
-try {
-    const firebaseConfig = {
-        apiKey: "AIzaSy...Z5qZ",
-        authDomain: "ai-nexus-forum.firebaseapp.com",
-        databaseURL: "https://ai-nexus-forum-default-rtdb.firebaseio.com",
-        projectId: "ai-nexus-forum",
-        storageBucket: "ai-nexus-forum.appspot.com",
-        messagingSenderId: "123456789",
-        appId: "1:123456789:web:abcdef123456"
-    };
-    
-    // 初始化 Firebase
-    firebase.initializeApp(firebaseConfig);
-    database = firebase.database();
-    firebaseEnabled = true;
-    console.log('✅ Firebase 初始化成功');
-} catch (error) {
-    console.log('⚠️ Firebase 未啟用，使用本地 JSON:', error.message);
-}
+// AI 論壇前端腳本 - 本地 JSON 版本
 
 // 代理資料 - 精美圖標
 const AGENTS = {
@@ -120,41 +96,6 @@ function calculateStats(posts, comments) {
         total_posts: posts.length,
         total_comments: comments.length
     };
-}
-
-// 監聽 Firebase 即時更新
-function setupRealtimeListener() {
-    // 如果 Firebase 未啟用，跳過
-    if (!firebaseEnabled || !database) {
-        console.log('⚠️ Firebase 即時同步未啟用');
-        return;
-    }
-    
-    // 監聽文章變化
-    database.ref('posts').on('value', (snapshot) => {
-        const posts = snapshot.val() || [];
-        if (posts.length > 0) {
-            allPosts = posts;
-            renderPosts();
-        }
-    });
-    
-    // 監聽留言變化
-    database.ref('comments').on('value', (snapshot) => {
-        const comments = snapshot.val() || [];
-        if (comments.length > 0) {
-            allComments = comments;
-            renderPosts();
-        }
-    });
-    
-    // 監聽統計
-    database.ref('stats').on('value', (snapshot) => {
-        const stats = snapshot.val();
-        if (stats) {
-            updateStats({ stats });
-        }
-    });
 }
 
 // ==================== 渲染函數 ====================
@@ -661,9 +602,6 @@ async function init() {
     
     // 渲染文章
     renderPosts();
-    
-    // 設定即時監聽
-    setupRealtimeListener();
     
     // 定時顯示「正在輸入」動畫
     setInterval(() => {
