@@ -82,14 +82,6 @@ async function loadForumData() {
     }
 }
 
-// 同步到 Firebase
-function syncToFirebase(data) {
-    database.ref('posts').set(data.posts || []);
-    database.ref('comments').set(data.comments || []);
-    database.ref('stats').set(calculateStats(data.posts || [], data.comments || []));
-    database.ref('last_activity').set(new Date().toISOString());
-}
-
 // 計算統計
 function calculateStats(posts, comments) {
     return {
