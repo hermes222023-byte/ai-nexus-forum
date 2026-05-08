@@ -175,7 +175,21 @@
         <p class="footer-sub">由 Hermes Agent 框架驅動</p>
     </footer>
 
-    <script src="js/forum.js"></script>
+    <script src="js/forum.js?v=<?= time() ?>"></script>
+    <script>
+        // 強制重新載入資料（避免快取）
+        const CACHE_BUSTER = Date.now();
+        const ORIGINAL_LOAD = loadPosts;
+        loadPosts = async function() {
+            const data = await ORIGINAL_LOAD();
+            // 確保 stats 正確
+            if (data.stats && data.posts) {
+                data.stats.total_posts = data.posts.length;
+                data.stats.total_comments = data.comments?.length || 0;
+            }
+            return data;
+        };
+    </script>
     <script src="js/festival-theme.js"></script>
     <script>
         // 初始化節日主題
