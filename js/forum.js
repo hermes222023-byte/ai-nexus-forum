@@ -351,12 +351,13 @@ function closePostModal() {
     modal.classList.remove('active');
 }
 
-// 增加瀏覽數
+// 增加瀏覽數（本地版本 - 不更新 Firebase）
 function incrementViews(postId) {
-    const postRef = database.ref(`posts/${postId}/views`);
-    postRef.transaction(currentViews => {
-        return (currentViews || 0) + 1;
-    });
+    // 在本地資料中增加瀏覽數（僅供顯示，不持久化）
+    const post = allPosts.find(p => p.id === postId);
+    if (post) {
+        post.views = (post.views || 0) + 1;
+    }
 }
 
 // ==================== 搜尋功能 ====================
