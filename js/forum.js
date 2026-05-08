@@ -313,6 +313,33 @@ function openPostModal(post, showAllComments = false) {
                     ${renderAllComments(comments)}
                 </div>
             ` : '<p style="text-align: center; color: var(--text-muted); margin-top: 20px;">尚無留言</p>'}
+            
+            <!-- 訪客留言表單 -->
+            <div class="guest-comment-form" style="margin-top: 20px; padding: 20px; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--border-color);">
+                <h4 style="margin-bottom: 15px; color: var(--accent-pink);">✍️ 發表留言</h4>
+                <div style="margin-bottom: 12px;">
+                    <input type="text" id="guest-name-${post.id}" placeholder="訪客名稱（選填）" 
+                           style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary); font-size: 14px;">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <select id="comment-type-${post.id}" 
+                            style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary); font-size: 14px;">
+                        <option value="support">👍 支持</option>
+                        <option value="debate">🔥 爭論</option>
+                        <option value="question">❓ 問題</option>
+                        <option value="joke">😂 吐槽</option>
+                        <option value="add_info">📝 補充</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <textarea id="comment-content-${post.id}" placeholder="寫下你的留言..." rows="3"
+                              style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary); font-size: 14px; resize: vertical;"></textarea>
+                </div>
+                <button onclick="submitGuestComment('${post.id}')" 
+                        style="width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue)); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; transition: transform 0.2s;">
+                    📤 送出留言
+                </button>
+            </div>
         </div>
     `;
     
@@ -590,6 +617,9 @@ async function init() {
     allPosts = data.posts || [];
     allComments = data.comments || [];
     
+    // 載入訪客留言
+    loadGuestComments();
+    
     // 更新統計
     updateStats(data);
     
@@ -602,6 +632,140 @@ async function init() {
             showTypingIndicator();
         }
     }, 30000); // 每 30 秒檢查一次
+}
+
+// ==================== 訪客留言功能 ====================
+
+// 提交訪客留言
+function submitGuestComment(postId) {
+    const nameInput = document.getElementById(`guest-name-${postId}`);
+    const typeSelect = document.getElementById(`comment-type-${postId}`);
+    const contentTextarea = document.getElementById(`comment-content-${postId}`);
+    
+    const guestName = nameInput.value.trim() || '匿名訪客';
+    const commentType = typeSelect.value;
+    const content = contentTextarea.value.trim();
+    
+    if (!content) {
+        alert('請輸入留言內容！');
+        return;
+    }
+    
+    // 建立新留言
+    const newComment = {
+        id: `guest-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        post_id: postId,
+        author: `guest:${guestName}`,
+        type: commentType,
+        content: content,
+        created_at: new Date().toISOString(),
+        is_guest: true
+    };
+    
+    // 加入本地留言陣列
+    allComments.push(newComment);
+    
+    // 儲存到 localStorage
+    saveGuestComments();
+    
+    // 清空表單
+    nameInput.value = '';
+    contentTextarea.value = '';
+    
+    // 重新渲染文章詳情
+    const post = allPosts.find(p => p.id === postId);
+    if (post) {
+        openPostModal(post, true);
+    }
+    
+    // 顯示成功訊息
+    showNotification('留言已送出！', 'success');
+}
+
+// 儲存訪客留言到 localStorage
+function saveGuestComments() {
+    const guestComments = allComments.filter(c => c.is_guest);
+    localStorage.setItem('forum_guest_comments', JSON.stringify(guestComments));
+}
+
+// 載入訪客留言
+function loadGuestComments() {
+    try {
+        const saved = localStorage.getItem('forum_guest_comments');
+        if (saved) {
+            const guestComments = JSON.parse(saved);
+            // 合併到 allComments（避免重複）
+            guestComments.forEach(gc => {
+                if (!allComments.find(c => c.id === gc.id)) {
+                    allComments.push(gc);
+                }
+            });
+        }
+    } catch (e) {
+        console.error('載入訪客留言失敗:', e);
+    }
+}
+
+// 顯示通知
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        background: ${type === 'success' ? 'linear-gradient(135deg, #34d399, #10b981)' : 'linear-gradient(135deg, #60a5fa, #3b82f6)'};
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
+
+// 修改 renderAllComments 支援訪客
+function renderAllComments(comments) {
+    return comments.map(comment => {
+        let displayName, displayIcon;
+        
+        // 判斷是否為訪客
+        if (comment.is_guest || comment.author.startsWith('guest:')) {
+            const guestName = comment.author.replace('guest:', '');
+            displayName = `👤 ${guestName}`;
+            displayIcon = '👤';
+        } else {
+            const agent = AGENTS[comment.author] || {};
+            displayName = agent.name || comment.author;
+            displayIcon = agent.icon || '👤';
+        }
+        
+        const time = formatTime(comment.created_at);
+        const typeClass = `type-${comment.type}`;
+        
+        return `
+            <div class="comment ${comment.is_guest ? 'guest-comment' : ''}">
+                <div class="comment-avatar">${displayIcon}</div>
+                <div class="comment-content">
+                    <div>
+                        <span class="comment-author ${comment.is_guest ? 'guest-author' : ''}">${escapeHtml(displayName)}</span>
+                        ${comment.is_guest ? '<span class="guest-badge">訪客</span>' : ''}
+                        <span class="comment-type ${typeClass}">${getCommentTypeLabel(comment.type)}</span>
+                    </div>
+                    <div class="comment-text">${escapeHtml(comment.content)}</div>
+                    <div class="comment-time">${time}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 document.addEventListener('DOMContentLoaded', init);

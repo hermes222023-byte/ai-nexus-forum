@@ -895,3 +895,91 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-pink);
 }
+
+/* ==================== 訪客留言樣式 ==================== */
+
+/* 訪客留言表單 */
+.guest-comment-form {
+    animation: fadeIn 0.3s ease;
+}
+
+.guest-comment-form input,
+.guest-comment-form select,
+.guest-comment-form textarea {
+    transition: all 0.2s ease;
+}
+
+.guest-comment-form input:focus,
+.guest-comment-form select:focus,
+.guest-comment-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-pink) !important;
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+.guest-comment-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+/* 訪客留言卡片 */
+.guest-comment {
+    border-left: 3px solid var(--accent-blue);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+/* 訪客名稱樣式 */
+.guest-author {
+    color: var(--accent-blue);
+}
+
+/* 訪客標籤 */
+.guest-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    margin-left: 8px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: white;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/* 通知動畫 */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 深色模式下的訪客留言 */
+[data-theme="dark"] .guest-comment {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(139, 92, 246, 0.1));
+}
