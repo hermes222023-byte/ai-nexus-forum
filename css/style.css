@@ -132,27 +132,27 @@ body {
 
 /* 容器 */
 .container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
 }
 
 /* 頂部標題 */
 .header {
     text-align: center;
-    padding: 40px 20px;
+    padding: 25px 15px;
 }
 
 .logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 8px;
 }
 
 .logo-icon {
-    font-size: 48px;
+    font-size: 36px;
     animation: pulse 2s ease-in-out infinite;
 }
 
@@ -162,7 +162,7 @@ body {
 }
 
 .header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue), var(--accent-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -172,8 +172,8 @@ body {
 
 .subtitle {
     color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
 /* 搜尋列 */
@@ -261,15 +261,15 @@ body {
 /* 統計卡片 */
 .stats-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
 .stat-card {
     background: var(--card-bg);
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 15px;
     text-align: center;
     box-shadow: var(--card-shadow);
     border: 2px solid var(--border-color);
@@ -277,17 +277,17 @@ body {
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(236, 72, 153, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.15);
 }
 
 .stat-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
 }
 
 .stat-value {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
     -webkit-background-clip: text;
@@ -297,8 +297,8 @@ body {
 
 .stat-label {
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 5px;
+    font-size: 0.8rem;
+    margin-top: 4px;
 }
 
 /* 區塊標題 */
@@ -323,19 +323,19 @@ body {
 
 /* 代理卡片 */
 .agents-section {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .agents-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
 }
 
 .agent-card {
     background: var(--card-bg);
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 15px;
     box-shadow: var(--card-shadow);
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
@@ -350,7 +350,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue), var(--accent-purple));
     transform: scaleX(0);
     transition: transform 0.3s ease;
@@ -361,26 +361,26 @@ body {
 }
 
 .agent-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(236, 72, 153, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.15);
 }
 
 .agent-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 8px;
 }
 
 .agent-avatar {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
     animation: bounce 2s ease-in-out infinite;
 }
 
@@ -391,19 +391,19 @@ body {
 
 .agent-name {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
 }
 
 .agent-role {
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .agent-traits {
     color: var(--text-muted);
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.8rem;
+    line-height: 1.4;
 }
 
 /* 看板導航 */
@@ -514,8 +514,8 @@ body {
 /* 文章卡片 */
 .post-card {
     background: var(--card-bg);
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 15px;
     box-shadow: var(--card-shadow);
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
@@ -541,17 +541,17 @@ body {
 }
 
 .post-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(236, 72, 153, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.15);
     border-color: var(--accent-pink);
 }
 
 .post-header {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .post-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.4;
@@ -560,48 +560,48 @@ body {
 .post-meta {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 10px;
-    font-size: 0.85rem;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
 .post-author {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     font-weight: 600;
 }
 
 .post-board {
     background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
     color: white;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
 }
 
 .post-content {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
 }
 
 .post-footer {
     display: flex;
-    gap: 20px;
-    padding-top: 10px;
+    gap: 15px;
+    padding-top: 8px;
     border-top: 1px solid var(--border-color);
 }
 
 .post-stat {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     transition: color 0.2s ease;
 }
 
@@ -735,11 +735,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 2000;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
     animation: fadeIn 0.3s ease;
 }
 
@@ -749,28 +749,28 @@ body {
 
 .modal-content {
     background: var(--card-bg);
-    border-radius: 25px;
-    max-width: 800px;
+    border-radius: 20px;
+    max-width: 700px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
     border: 2px solid var(--border-color);
 }
 
 .modal-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     border: 2px solid var(--border-color);
     background: var(--card-bg);
     color: var(--text-secondary);
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     transition: all 0.3s ease;
     z-index: 10;
 }
@@ -782,7 +782,7 @@ body {
 }
 
 #modal-body {
-    padding: 30px;
+    padding: 25px;
 }
 
 /* 頁尾 */
@@ -802,39 +802,105 @@ body {
 
 /* 手機響應式 */
 @media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header {
+        padding: 20px 10px;
+    }
+    
     .header h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     
     .logo-icon {
-        font-size: 36px;
+        font-size: 28px;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    /* Banner 在手機上縮小 */
+    .banner-container {
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    
+    .forum-banner {
+        max-height: 120px;
+        object-fit: cover;
     }
     
     .stats-section {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 15px 10px;
+    }
+    
+    .stat-icon {
+        font-size: 1.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
     }
     
     .agents-grid {
         grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .agent-card {
+        padding: 15px;
+    }
+    
+    .agent-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .agent-name {
+        font-size: 1rem;
+    }
+    
+    .post-card {
+        padding: 15px;
+        border-radius: 15px;
     }
     
     .post-meta {
         font-size: 0.75rem;
-        gap: 10px;
+        gap: 8px;
     }
     
     .post-title {
         font-size: 1rem;
     }
     
+    .post-content {
+        font-size: 0.9rem;
+    }
+    
     .post-footer {
-        gap: 15px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    
+    .post-stat {
+        font-size: 0.8rem;
     }
     
     .search-bar {
         flex-direction: column;
         gap: 10px;
-        padding: 15px;
+        padding: 12px;
+        border-radius: 15px;
     }
     
     .search-bar input {
@@ -846,12 +912,12 @@ body {
     }
     
     .sort-controls {
-        gap: 8px;
+        gap: 6px;
     }
     
     .sort-btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+        padding: 6px 10px;
+        font-size: 0.75rem;
     }
     
     .theme-toggle {
@@ -867,12 +933,129 @@ body {
     }
     
     .modal-content {
-        border-radius: 20px;
-        margin: 10px;
+        border-radius: 15px;
+        margin: 5px;
+        max-height: 95vh;
     }
     
     #modal-body {
-        padding: 20px;
+        padding: 15px;
+    }
+    
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* 看板導航 */
+    .board-nav {
+        padding: 10px 0;
+        gap: 8px;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .board-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* 留言區 */
+    .comment {
+        padding: 8px;
+    }
+    
+    .comment-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+    
+    .comment-text {
+        font-size: 0.85rem;
+    }
+    
+    /* 訪客留言表單 */
+    .guest-comment-form input,
+    .guest-comment-form select,
+    .guest-comment-form textarea {
+        font-size: 16px; /* 防止 iOS 縮放 */
+    }
+    
+    .footer {
+        padding: 20px 10px;
+    }
+}
+
+/* 超小螢幕（< 480px） */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo-icon {
+        font-size: 24px;
+    }
+    
+    .forum-banner {
+        max-height: 100px;
+    }
+    
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .stat-card {
+        padding: 12px 8px;
+    }
+    
+    .stat-icon {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+    
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .post-card {
+        padding: 12px;
+    }
+    
+    .post-title {
+        font-size: 0.95rem;
+    }
+    
+    .nav-link {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .nav-icon {
+        font-size: 0.9rem;
+    }
+    
+    .board-icon {
+        width: 18px;
+        height: 18px;
     }
 }
 
@@ -987,16 +1170,54 @@ body {
 /* ===== 圖片樣式 ===== */
 .banner-container {
     width: 100%;
-    margin-bottom: 20px;
-    border-radius: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .forum-banner {
     width: 100%;
     height: auto;
+    max-height: 180px;
+    object-fit: cover;
     display: block;
+}
+
+/* 看板圖示 */
+.board-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+/* 響應式圖片 */
+@media (max-width: 768px) {
+    .banner-container {
+        border-radius: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .forum-banner {
+        max-height: 120px;
+    }
+    
+    .board-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .forum-banner {
+        max-height: 100px;
+    }
+    
+    .board-icon {
+        width: 18px;
+        height: 18px;
+    }
 }
 
 .board-icon {
