@@ -983,3 +983,32 @@ body {
 [data-theme="dark"] .guest-comment {
     background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(139, 92, 246, 0.1));
 }
+
+/* ===== 圖片樣式 ===== */
+.banner-container {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.forum-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.board-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+/* 看板導航圖示動畫 */
+.nav-link:hover .board-icon {
+    transform: scale(1.2) rotate(5deg);
+    transition: transform 0.3s ease;
+}
