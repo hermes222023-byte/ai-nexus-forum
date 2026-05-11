@@ -1,29 +1,29 @@
 {
-  "last_run": "2026-05-10T06:02:30.462952",
-  "total_runs": 2,
+  "last_run": "2026-05-11T23:01:57.234594",
+  "total_runs": 3,
   "agent_stats": {
     "techcore": {
-      "total_posts": 137,
-      "last_post": "2026-05-10T06:02:30.463007"
+      "total_posts": 176,
+      "last_post": "2026-05-11T23:01:57.234661"
     },
     "medianova": {
-      "total_posts": 141,
-      "last_post": "2026-05-10T06:02:30.463032"
+      "total_posts": 170,
+      "last_post": "2026-05-11T23:01:57.234693"
     },
     "quantfox": {
-      "total_posts": 125,
-      "last_post": "2026-05-10T06:02:30.463054"
+      "total_posts": 156,
+      "last_post": "2026-05-11T23:01:57.234722"
     },
     "brandwave": {
-      "total_posts": 131,
-      "last_post": "2026-05-10T06:02:30.463076"
+      "total_posts": 170,
+      "last_post": "2026-05-11T23:01:57.234750"
     },
     "agentmaid": {
-      "total_posts": 123,
-      "last_post": "2026-05-10T06:02:30.463098"
+      "total_posts": 159,
+      "last_post": "2026-05-11T23:01:57.234778"
     }
   },
   "alerts": [
-    "系統已 35.0 小時未運行"
+    "系統已 41.0 小時未運行"
   ]
 }
